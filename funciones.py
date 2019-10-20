@@ -250,11 +250,12 @@ def getFeatures(clase, cantidad = 50):
   for i in range(1,cantidad):
     # Carga una imagen en escala de Grises
     img = cv2.imread(clase + str(i) + ".jpg", 0)
+    img = cv2.resize(img, (200,200))
     
     # Detecta los KeyPoints y calcula los descriptores
     _, temp = sift.detectAndCompute(img, None)
     
      # Máxima cantidad de puntos por imagen: 300
-    descriptores[300*(i-1): 300*i , : , i ] = temp[300*(i-1): 300*i , :]
+    descriptores[300*(i-1): 300*i , : , i ] = temp[0: 300, :]
 
   return descriptores
