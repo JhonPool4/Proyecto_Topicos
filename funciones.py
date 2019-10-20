@@ -242,7 +242,7 @@ def getFeatures(clase, cantidad = 50):
     
   """
   
-  descriptores = np.zeros((300*cantidad, 128, 3)) 
+  descriptores = np.zeros((300*cantidad, 128)) 
   
   # Crea un objeto SIFT
   sift = cv2.xfeatures2d.SIFT_create()
@@ -255,6 +255,6 @@ def getFeatures(clase, cantidad = 50):
     _, temp = sift.detectAndCompute(img, None)
     
      # Máxima cantidad de puntos por imagen: 300
-    descriptores[300*(i-1): 300*i , : , i ] = temp[0: 300, :]
+    descriptores[300*(i-1): 300*i , :] = temp[0: 300, :]
 
   return descriptores
