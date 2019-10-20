@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 import matplotlib.pyplot as plt
 
 
@@ -256,5 +257,4 @@ def getFeatures(clase, cantidad = 50):
      # Máxima cantidad de puntos por imagen: 300
     descriptores[300*(i-1): 300*i , : , i ] = temp[300*(i-1): 300*i , :]
 
-    
   return descriptores
