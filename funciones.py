@@ -253,6 +253,7 @@ def getFeatures(clase, Nimagenes = 50, Ncaracteristicas = 300):
     
     # Detecta los KeyPoints y calcula los descriptores
     _, temp = sift.detectAndCompute(img, None)
+    print("Imagen: " + clase + str(i) + ".jpg")
     print("temp: ", temp.shape)
     
      # Máxima cantidad de puntos por imagen: 300
