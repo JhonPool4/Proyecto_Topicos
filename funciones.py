@@ -227,7 +227,7 @@ def predecir(X, w, w0):
     return ypred, yprob
 
 
-def getFeatures(clase, cantidad = 50):
+def getFeatures(clase, Nimagenes = 50, Ncaracteristicas = 300):
   
   """
   Obtiene  300 descriptores por cada imágen de entrenamiento de una clase en específico
@@ -242,12 +242,12 @@ def getFeatures(clase, cantidad = 50):
     
   """
   
-  descriptores = np.zeros((300*cantidad, 128)) 
+  descriptores = np.zeros((Ncaracteristicas*Nimagenes, 128)) 
   
   # Crea un objeto SIFT
   sift = cv2.xfeatures2d.SIFT_create()
   
-  for i in range(1,cantidad):
+  for i in range(1,Nimagenes):
     # Carga una imagen en escala de Grises
     img = cv2.imread(clase + str(i) + ".jpg", 0)
     
@@ -256,6 +256,6 @@ def getFeatures(clase, cantidad = 50):
     print("temp: ", temp.shape)
     
      # Máxima cantidad de puntos por imagen: 300
-    descriptores[300*(i-1): 300*i , :] = temp[0: 300, :]
+    descriptores[Ncaracteristicas*(i-1): Ncaracteristicas*i , :] = temp[0: Ncaracteristicas, :]
 
   return descriptores
